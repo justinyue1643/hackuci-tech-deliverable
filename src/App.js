@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import HackApp from './components/HackApp';
+import PetrAnimation from './components/PetrAnimation';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="hackapp-container">
+        <HackApp className = "hackapp"/>
+      </div>
+      <PetrAnimation />
     </div>
   );
 }

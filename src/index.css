@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@media screen and (min-width: 1200px) {
+  body {
+    background: linear-gradient(90deg, #ff7b5c , #ff6c81);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  body {
+    background: linear-gradient(180deg, #ff7b5c , #ff6c81);
+  }
+}

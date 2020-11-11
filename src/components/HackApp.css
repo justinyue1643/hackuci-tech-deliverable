@@ -1,0 +1,28 @@
+.HackApp {
+    width: 400px;
+}
+
+.form-title {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.fun-fact {
+    height: 200px;
+}
+
+.fun-fact::placeholder {
+    float: top;
+}
+
+.submit  {
+    float: right;
+    color: white;
+    background: linear-gradient(90deg, #ff7b5c, #ff6c81);
+    border-radius: 5px;
+}
