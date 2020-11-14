@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import HackApp from './components/HackApp';
 import PetrAnimation from './components/PetrAnimation';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
