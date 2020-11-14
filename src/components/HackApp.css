@@ -2,6 +2,10 @@
     width: 400px;
 }
 
+Form.Group {
+    border-radius: 300px;
+}
+
 .form-title {
     font-weight: bold;
     font-size: 28px;
@@ -24,5 +28,7 @@
     float: right;
     color: white;
     background: linear-gradient(90deg, #ff7b5c, #ff6c81);
-    border-radius: 5px;
+    border-radius: 20px;
+    padding: 10px;
+    width: 150px;
 }

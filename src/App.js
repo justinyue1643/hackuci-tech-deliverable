@@ -8,9 +8,11 @@ function App() {
   return (
     <div className="App">
       <div className="hackapp-container">
-        <HackApp className = "hackapp"/>
+        <HackApp className="hackapp" />
       </div>
-      <PetrAnimation />
+      <div className = "petr-container">
+        <PetrAnimation className = 'petr' />
+      </div>
     </div>
   );
 }

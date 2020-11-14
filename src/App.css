@@ -1,18 +1,21 @@
 .App {
-    background-color: linear-gradient(90deg, #ff7b5c, #ff6c81);
+    margin-top: 10%;
 }
 
-.hackapp-container {
-    position: relative;
+.hackapp-container, .petr-container {
+    width: 100%;
+    display: grid;
+    justify-content: center;
 }
 
 .hackapp {
-    margin: 0px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    margin-top: 100px;
+}
+
+.hackapp, .petr {
+    display: grid;
+    justify-content: center;
+    align-content: center;
 }
 
 @media screen and (min-width: 1200px) {
