@@ -1,6 +1,7 @@
 import './HackApp.css';
 import { Button, Card, Form } from 'react-bootstrap';
 import { useState } from 'react';
+import axios from 'axios';
 
 const ApplicationForm = (e) => {
  
@@ -8,9 +9,24 @@ const ApplicationForm = (e) => {
     const [email, setEmail] = useState("");
     const [fact, setFact] = useState("");
 
-    const sendFormData = (e) => {
+    const sendFormData = async (e) => {
         e.preventDefault();
-        console.log('hello');
+        console.log(name);
+        console.log(email);
+        console.log(fact);
+
+        const res = await axios.get('https://hack-uci-test-endpoint.herokuapp.com/', {
+            params: {
+                "name": name,
+                "email": email,
+                "fact": fact,
+            }
+        });
+
+        console.log(res);
+        setName("");
+        setEmail("");
+        setFact("");
     }
 
     return (
@@ -21,13 +37,23 @@ const ApplicationForm = (e) => {
                     className="border border-dark"
                     placeholder="Name"
                     defaultValue = {name} 
-                    onChange = {setName}/>
+                    value = {name}
+                    onChange = {e => setName(e.target.value)}/>
 
                 <Form.Label className="label mt-3">Email</Form.Label>
-                <Form.Control className="border border-dark" placeholder="Email" />
+                <Form.Control 
+                    className="border border-dark"
+                    placeholder="Email"
+                    defaultValue = {email}
+                    value = {email}
+                    onChange = {e => setEmail(e.target.value)}/>
 
                 <Form.Label className="label mt-3">Fun Fact</Form.Label>
-                <Form.Control className="fun-fact border border-dark" placeholder="Fun Fact" />
+                <Form.Control
+                    className="fun-fact border border-dark"
+                    placeholder="Fun Fact"
+                    value = {fact}
+                    onChange = {e => setFact(e.target.value)}/>
 
                 <Button variant = "light" className = "submit mt-5" onSubmit = {sendFormData} onClick={sendFormData}>Submit</Button>
             </Form.Group>
