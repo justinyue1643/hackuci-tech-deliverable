@@ -12,13 +12,13 @@ code {
     monospace;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1000px) {
   body {
     background: linear-gradient(90deg, #ff7b5c , #ff6c81);
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
   body {
     background: linear-gradient(180deg, #ff7b5c , #ff6c81);
   }

@@ -16,14 +16,6 @@ Form.Group {
     font-size: 18px;
 }
 
-.fun-fact {
-    height: 200px;
-}
-
-.fun-fact::placeholder {
-    float: top;
-}
-
 .submit  {
     float: right;
     color: white;

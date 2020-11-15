@@ -18,14 +18,14 @@
     align-content: center;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1000px) {
     .App {
         display: grid;
         grid-template-columns: 50% 50%;
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
     .App {
         display: flex;
         flex-direction: column;

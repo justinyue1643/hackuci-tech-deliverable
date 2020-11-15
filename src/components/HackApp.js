@@ -59,6 +59,8 @@ const ApplicationForm = (e) => {
                     className="fun-fact border border-dark"
                     placeholder="Fun Fact"
                     value={fact}
+                    as = "textarea"
+                    rows = "8"
                     onChange={e => setFact(e.target.value)} />
 
                 <Button variant="light" className="submit mt-5" onSubmit={sendFormData} onClick={sendFormData}>Submit</Button>
