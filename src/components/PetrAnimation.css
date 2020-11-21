@@ -1,6 +1,7 @@
 .petr-img {
-    height: 450px;
-    width: 300px;
+    animation-duration: 5s;
+    animation-name: pop-img;
+    animation-iteration-count: infinite;
 }
 
 @media screen and (max-width: 1200px) {
@@ -9,6 +10,21 @@
     }
 }
 
-@keyframes petr-img {
+@keyframes pop-img {
+    from {
+        height: 450px;
+        width: 300px;
+        
+    }
+
+    50% {
+        height: 600px;
+        width: 400px;
+    }
+
+    to {
+        height: 450px;
+        width: 300px;
+    }
     
 }

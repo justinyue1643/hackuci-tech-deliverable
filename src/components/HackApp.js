@@ -2,7 +2,7 @@ import './HackApp.css';
 import { Button, Card, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import axios from 'axios';
-import Notif from './Notif.js';
+import Notif from './Notif';
 import { toast, ToastContainer } from 'react-toastify';
 
 const ApplicationForm = (e) => {
@@ -52,6 +52,7 @@ const ApplicationForm = (e) => {
                     className="border border-dark"
                     placeholder="Email"
                     value={email}
+                    type = "email"
                     onChange={e => setEmail(e.target.value)} />
 
                 <Form.Label className="label mt-3">Fun Fact</Form.Label>
