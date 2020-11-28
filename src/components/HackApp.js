@@ -4,12 +4,16 @@ import { useState } from 'react';
 import axios from 'axios';
 import Notif from './Notif';
 import { toast, ToastContainer } from 'react-toastify';
+import { NameValidationMessage, EmailValidationMessage, FactValidationMessage} from './validationMessages';
 
-const ApplicationForm = (e) => {
-
+const ApplicationForm = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [fact, setFact] = useState("");
+
+    const [isEmailValidated, setIsEmailValidated] = useState(true);
+    const [isNameValidated, setIsNameValidated] = useState(true);
+    const [isFactValidated, setIsFactValidated] = useState(true);
 
     const sendFormData = async (e) => {
         e.preventDefault();
@@ -24,16 +28,39 @@ const ApplicationForm = (e) => {
                 "name": name,
             }
         })
-        .then((res) => {
-            console.log(res);
-            setName("");
-            setEmail("");
-            setFact("");
-            return toast.success('Success!');
-        })
-        .catch(e => {
-            return toast.warning('Something went wrong!');
-        })
+            .then((res) => {
+                console.log(res);
+                setName("");
+                setEmail("");
+                setFact("");
+                setIsNameValidated(true);
+                setIsFactValidated(true);
+                setIsEmailValidated(true);
+                return toast.success('Success!');
+            })
+            .catch(e => {
+                if (email.length == 0 || email.indexOf("@") == -1) {
+                    setIsEmailValidated(false);
+                }
+                else {
+                    setIsEmailValidated(true);
+                }
+
+                if (name.length == 0) {
+                    setIsNameValidated(false);
+                }
+                else {
+                    setIsNameValidated(true);
+                }
+
+                if (fact.length == 0) {
+                    setIsFactValidated(false);
+                }
+                else {
+                    setIsFactValidated(true);
+                }
+
+            })
     }
 
     return (
@@ -46,26 +73,33 @@ const ApplicationForm = (e) => {
                     placeholder="Name"
                     value={name}
                     onChange={e => setName(e.target.value)} />
+                {isNameValidated ? <div></div> : <NameValidationMessage/>}
+            </Form.Group>
 
+            <Form.Group>
                 <Form.Label className="label mt-3">Email</Form.Label>
                 <Form.Control
                     className="border border-dark"
                     placeholder="Email"
                     value={email}
-                    type = "email"
+                    type="email"
                     onChange={e => setEmail(e.target.value)} />
+                {isEmailValidated ? <div></div> : <EmailValidationMessage/>}
+            </Form.Group>
 
+            <Form.Group>
                 <Form.Label className="label mt-3">Fun Fact</Form.Label>
                 <Form.Control
                     className="fun-fact border border-dark"
                     placeholder="Fun Fact"
                     value={fact}
-                    as = "textarea"
-                    rows = "8"
+                    as="textarea"
+                    rows="8"
                     onChange={e => setFact(e.target.value)} />
-
-                <Button variant="light" className="submit mt-5" onSubmit={sendFormData} onClick={sendFormData}>Submit</Button>
+                {isFactValidated ? <div></div> : <FactValidationMessage/>}
             </Form.Group>
+
+            <Button variant="light" className="submit mt-5" onSubmit={sendFormData} onClick={sendFormData}>Submit</Button>
         </Form>
     );
 }
