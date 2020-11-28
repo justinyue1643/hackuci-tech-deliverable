@@ -5,6 +5,47 @@ import axios from 'axios';
 import Notif from './Notif';
 import { toast, ToastContainer } from 'react-toastify';
 import { NameValidationMessage, EmailValidationMessage, FactValidationMessage} from './validationMessages';
+import { validate } from 'validate.js';
+
+const validateValue = (state, setState) => {
+    if (state.length === 0) {
+        setState(false);
+    }
+    else {
+        setState(true);
+    }
+}
+
+const validateEmail = (state, setState) => {
+    const errorResults = [
+        "^Please enter an email address",
+        "^Please enter a valid email address"
+    ];
+
+
+    const emailConstraint = {
+        emailAddress: {
+            presence: {
+                allowEmpty: false,
+                message: errorResults[0]
+            },
+            email: {
+                message: errorResults[1]
+            }
+        }
+    };
+    const validationResult = validate({emailAddress: state}, emailConstraint);
+    //let result = "^" + validationResult.emailAddress;
+
+    console.log(validationResult);
+
+    if (validationResult === undefined) {
+        setState(true);
+    }
+    else {
+        setState(false);
+    }
+}
 
 const ApplicationForm = () => {
     const [name, setName] = useState("");
@@ -17,14 +58,14 @@ const ApplicationForm = () => {
 
     const sendFormData = async (e) => {
         e.preventDefault();
-        console.log(name);
+        /*console.log(name);
         console.log(email);
-        console.log(fact);
+        console.log(fact);*/
 
         axios.get('https://hack-uci-test-endpoint.herokuapp.com/test', {
             params: {
                 "email": email,
-                "funfact": email,
+                "funfact": fact,
                 "name": name,
             }
         })
@@ -39,27 +80,9 @@ const ApplicationForm = () => {
                 return toast.success('Success!');
             })
             .catch(e => {
-                if (email.length == 0 || email.indexOf("@") == -1) {
-                    setIsEmailValidated(false);
-                }
-                else {
-                    setIsEmailValidated(true);
-                }
-
-                if (name.length == 0) {
-                    setIsNameValidated(false);
-                }
-                else {
-                    setIsNameValidated(true);
-                }
-
-                if (fact.length == 0) {
-                    setIsFactValidated(false);
-                }
-                else {
-                    setIsFactValidated(true);
-                }
-
+                validateEmail(email, setIsEmailValidated);
+                validateValue(name, setIsNameValidated);
+                validateValue(fact, setIsFactValidated);
             })
     }
 
